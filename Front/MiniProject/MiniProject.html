@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurants Recommendations</title>
+    <meta name="author" content="NWOO" />
+    <meta name="description" content="Restaurant Service" />
+    <meta name="keywords" content="Food Restaurants" />
+    <link rel="stylesheet" href="MiniProject.css" />
+  </head>
+
+  <body>
+    <!-- 🔹 Navigation -->
+    <nav>
+      <div class="inner">
+        <div class="nav-container">
+          <h1 class="nav-title">Restaurant Finder</h1>
+          <button class="nav-contact">Contact</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 🔹 Contact Info (Hidden by default) -->
+    <div id="contact-info" style="display: none; text-align: center; margin: 10px 0;">
+      📧 Email: <a href="mailto:nwoo37541@gmail.com">nwoo37541@gmail.com</a>
+    </div>
+
+    <!-- 🔹 Category Selection -->
+    <main>
+      <section id="category">
+        <div class="inner">
+          <h2 class="category-title">Choose Your Category</h2>
+          <div class="category-list">
+            <button class="category-item" id="Korean">Korean</button>
+            <button class="category-item" id="Chinese">Chinese</button>
+            <button class="category-item" id="Japanese">Japanese</button>
+            <button class="category-item" id="Western">Western</button>
+            <button class="category-item" id="Snacks">Snacks</button>
+            <button class="category-item" id="Grill">Grill</button>
+            <button class="category-item" id="Sushi">Sushi</button>
+            <button class="category-item" id="Others">Others</button>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 🔹 Map Container -->
+    <div id="map"></div>
+
+    <!-- 🔹 External Scripts -->
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=4a5868806c75e1fae551f0467beada29&libraries=services"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- 🔹 Toggle Contact Info Button -->
+    <script>
+      const contactBtn = document.querySelector(".nav-contact");
+      const contactInfo = document.getElementById("contact-info");
+
+      contactBtn.addEventListener("click", () => {
+        if (contactInfo.style.display === "none") {
+          contactInfo.style.display = "block";
+          contactBtn.textContent = "Close";
+        } else {
+          contactInfo.style.display = "none";
+          contactBtn.textContent = "Contact";
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+/* Reset default margin/padding */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Base font settings */
+html {
+    font-size: 10px;
+    font-family: "CookieRun-Regular";
+}
+
+/* Navigation bar */
+nav {
+    background: none;
+    padding: 1rem 0;
+    height: 59px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between; /* Align items left and right */
+    align-items: center;
+}
+
+.nav-title {
+    font-size: 2rem;
+}
+
+.nav-contact {
+    font-size: 1.6rem;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Layout padding */
+.inner {
+    padding: 0 1.5rem;
+}
+
+/* Category section */
+.category-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.category-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+/* Category buttons */
+.category-item {
+    width: 20%;
+    height: 5rem;
+    background: none;
+    border: none;
+    font-family: inherit;
+    text-align: center;
+    display: inline-block;
+    margin: 1.5rem;
+}
+
+.category-item:hover {
+    color: gray;
+    cursor: pointer;
+}
+
+/* Max width on large screens */
+@media all and (min-width: 1024px) {
+    .inner {
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+}
+
+/* Full height layout */
+body {
+    height: 100vh;
+    font-family: "Arial", sans-serif;
+}
+
+/* Main wrapper */
+main {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.5rem;
+}
+
+/* Kakao map area */
+#map {
+    width: 80%;
+    height: 500px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+/* Responsive map on mobile */
+@media (max-width: 768px) {
+    #map {
+        width: 90%;
+        height: 400px;
+    }
+}
+
+/* InfoWindow style */
+.infowindow {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Thumbnail image container */
+.infowindow-img-container {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Thumbnail image */
+.infowindow-img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Restaurant title */
+.infowindow-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Address text */
+.infowindow-address {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* YouTube link button */
+.infowindow-btn {
+    display: block;
+    font-size: 14px;
+    color: #0078d4;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.infowindow-btn:hover {
+    text-decoration: underline;
+}
