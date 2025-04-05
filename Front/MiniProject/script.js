@@ -20,7 +20,7 @@ let infowindowArray = [];
 // Fetch data from API
 async function getDataSet(category = "") {
   try {
-    const response = await axios.get(`http://localhost:3000/restaurants?category=${category}`);
+    const response = await axios.get(`http://43.200.229.248:3000/restaurants?category=${category}`);
     return response.data.result;
   } catch (error) {
     console.error("Failed to fetch data:", error);
