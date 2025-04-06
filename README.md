@@ -1,6 +1,6 @@
 # 🍱 Restaurant Finder
 
-A YouTube-based restaurant map web application that shows recommended places by category and location.
+A YouTube-based restaurant map web application that shows recommended places by category near Seoul, South Korea.
 
 ## 🔗 Live Website  
 👉 [http://www.r1project.store/](http://www.r1project.store/)
