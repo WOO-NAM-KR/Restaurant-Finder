@@ -1,7 +1,7 @@
 // Initialize Kakao map
 const container = document.getElementById("map");
 const options = {
-  center: new kakao.maps.LatLng(37.5326, 126.9906), // Map center: Yongsan, Seoul
+  center: new kakao.maps.LatLng(37.5326, 126.9906),
   level: 7,
 };
 const map = new kakao.maps.Map(container, options);
@@ -20,7 +20,7 @@ let infowindowArray = [];
 // Fetch data from API
 async function getDataSet(category = "") {
   try {
-    const response = await axios.get(`http://43.200.229.248:3000/restaurants?category=${category}`);
+    const response = await axios.get(`http://localhost:3000/restaurants?category=${category}`);
     return response.data.result;
   } catch (error) {
     console.error("Failed to fetch data:", error);
@@ -42,13 +42,24 @@ function getCoordsByAddress(address) {
   });
 }
 
+// Stabelized YouTube VideoID Extraction Function
+function extractVideoId(url) {
+  try {
+    const urlObj = new URL(url);
+    if (urlObj.hostname === "youtu.be") {
+      return urlObj.pathname.slice(1);
+    } else if (urlObj.hostname.includes("youtube.com")) {
+      return urlObj.searchParams.get("v") || urlObj.pathname.split("/").pop();
+    }
+    return "";
+  } catch (e) {
+    return "";
+  }
+}
+
 // Create infowindow content
 function getContent(data) {
-  const videoId = data.videoUrl
-    .replace("https://youtu.be/", "")
-    .replace("https://www.youtube.com/embed/", "")
-    .replace("https://www.youtube.com/watch?v=", "")
-    .split("&")[0];
+  const videoId = extractVideoId(data.videoUrl);
 
   return `
     <div class="infowindow">
@@ -87,7 +98,7 @@ async function setMap(dataSet) {
       kakao.maps.event.addListener(marker, "click", () => {
         closeAllInfowindows();
         infowindow.open(map, marker);
-        map.panTo(coords); // Move map center to marker
+        map.panTo(coords);
       });
     } catch (error) {
       console.error("Failed to create marker:", data.title, error);
@@ -97,12 +108,10 @@ async function setMap(dataSet) {
   kakao.maps.event.addListener(map, "click", closeAllInfowindows);
 }
 
-// Close all infowindows
 function closeAllInfowindows() {
   infowindowArray.forEach((infowindow) => infowindow.close());
 }
 
-// Remove all markers from map
 function closeAllMarkers() {
   markerArray.forEach((marker) => marker.setMap(null));
   markerArray = [];
@@ -120,7 +129,7 @@ const categoryMap = {
   Others: "기타",
 };
 
-// Category button click event
+// Category button click
 document.querySelector(".category-list").addEventListener("click", async (event) => {
   const categoryId = event.target.id;
   const category = categoryMap[categoryId];
@@ -134,7 +143,7 @@ document.querySelector(".category-list").addEventListener("click", async (event)
   }
 });
 
-// Initialize map with all data
+// Initialize with all data
 (async function init() {
   const dataSet = await getDataSet();
   setMap(dataSet);
